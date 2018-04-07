@@ -6,7 +6,7 @@
 > PHP 7.0 ve üzerinde en iyi şekilde çalışır
 > MYSQL Sistemlerde çalışır
 > Min 1 adet veritabanı
-
+ 
 # Kurulum
 
 1. `foruz85.sql` isimli dosyayı oluşturduğunuz veritabanına İçe Aktar menüsünden aktarım yapıyorsunuz
