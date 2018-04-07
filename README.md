@@ -4,7 +4,9 @@
 # Gereksimler
 
 > PHP 7.0 ve üzerinde en iyi şekilde çalışır
+
 > MYSQL Sistemlerde çalışır
+
 > Min 1 adet veritabanı
  
 # Kurulum
