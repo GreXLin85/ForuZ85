@@ -14,6 +14,7 @@ if ( $konugetir->rowCount() ){
 	$icerik = $row['icerik'];
 	$katagori = $row['katagori'];
 	$kimacti = $row['kimacti'];
+	$icon = $row['icon'];
 		}
 	}else{
 		header("location:forum.php");
@@ -31,7 +32,7 @@ if ( $yorumgetir->rowCount() ){
 if ($kosul == $id)
 {
 	//Konu gösterimi
-	echo "<center>$baslik<br>$icerik</center>";
+	echo "<center><div class='container'><div class='notification'><img src='$icon' height='16' width='16' > <strong style='font-size: 20px;'>$baslik</strong></div></div><br>$icerik</center>";
 	//Yorum gösterimi
 	if ($toplamyorum == 0) {
 	  echo "<br><center>Burada hiç yorum yok gibi gözüküyor";

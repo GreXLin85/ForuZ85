@@ -15,6 +15,7 @@ echo '<center style="color:white;">Kullanıcı Adınızı & Şifrenizi Boş Bır
   if($sql -> rowCount()){
     $_SESSION["kadi"]=$query["kadi"];
     $_SESSION["id"]=$query["id"];
+    $_SESSION["yetki"]=$query["yetki"];
     $_SESSION['login'] = '1';
     header("Refresh:2;url=forum.php");
     echo '<center style="color:white;">Giriş Yapıldı</center>';

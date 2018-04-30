@@ -27,16 +27,15 @@ if ( $mesajgetir->rowCount() ){
 		}
 	}
 
-
 if ($kosul == $id)
 {
 	//Konu gösterimi
-	echo "<center>$kadi<br></center>";
+	echo "<center>Kullanıcı adı : $kadi<br>Üyelik Tarihi : $uyeliktarih</center>";
 	//Yorum gösterimi
 	if ($toplamyorum == 0) {
-	  echo "<br><center>Burada hiç mesaj yok gibi gözüküyor";
+	  echo "<br><center><br>==============<br>Burada hiç mesaj yok gibi gözüküyor";
 	}else{
-		echo "<center><br>---------------<br>$mesaj";
+		echo "<center><br>==============<br>Kim Attı : $kimatti<br>Yorum : $mesaj";
 	}
 }else{
 	header("location:forum.php");
