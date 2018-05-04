@@ -3,7 +3,7 @@ ob_start();
 session_start();
 require_once('parcalar/koruma.php');
 require_once('baglan.php');
-require_once('parcalar/ustkisim.html');
+require_once('parcalar/ustkisim.php');
    $select = $db ->query("SELECT * FROM konular", PDO::FETCH_ASSOC);
    if ( $select->rowCount() ){ 
    		$toplam = $select->rowCount();
@@ -18,7 +18,7 @@ require_once('parcalar/ustkisim.html');
   <div class="media-content">
     <div class="content">
       <p>
-        <strong>'.$row['baslik'].'</strong> <small>@'.$row['kimacti'].'</small>
+        <strong>'.substr($row['baslik'], 0, 10).'</strong> <small>@'.$row['kimacti'].'</small>
         <br>
         '.substr($row['icerik'], 0, 25).'... <a href="konuoku.php?konu='.$row['id'].'">Devamını oku</a></p>
     </div>

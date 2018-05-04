@@ -3,7 +3,7 @@ ob_start();
 session_start();
 require_once('parcalar/koruma.php');
 require_once('baglan.php');
-require_once('parcalar/ustkisim.html');
+require_once('parcalar/ustkisim.php');
 $kosul = intval($_GET['kisi']);
 //Uyeye bak//
 $profilgetir = $db ->query("SELECT * FROM uyeler WHERE id = $kosul", PDO::FETCH_ASSOC);
@@ -31,6 +31,8 @@ if ($kosul == $id)
 {
 	//Konu gösterimi
 	echo "<center>Kullanıcı adı : $kadi<br>Üyelik Tarihi : $uyeliktarih</center>";
+	//yorum gönderme
+	echo ""
 	//Yorum gösterimi
 	if ($toplamyorum == 0) {
 	  echo "<br><center><br>==============<br>Burada hiç mesaj yok gibi gözüküyor";

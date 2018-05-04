@@ -3,12 +3,12 @@ ob_start();
 session_start();
 require_once('parcalar/koruma.php');
 require_once('baglan.php');
-require_once('parcalar/ustkisim.html');
+require_once('parcalar/ustkisim.php');
 if ($_POST) {
-	$baslik = $_POST["baslik"];
-	$icerik = $_POST["icerik"];
-	$katagori = $_POST["katagori"];
-	$icon = $_POST["icon"];
+	$baslik = htmlspecialchars($_POST["baslik"]);
+	$icerik = htmlspecialchars($_POST["icerik"]);
+	$katagori = htmlspecialchars($_POST["katagori"]);
+	$icon = htmlspecialchars($_POST["icon"]);
 
 	$kimacti = $_SESSION["kadi"];
 	$id = $_SESSION["id"];
@@ -30,7 +30,8 @@ if ($_POST) {
 
 	if ( $insert ){
 	    $last_id = $db->lastInsertId();
-	    print "insert işlemi başarılı!";
+	    print "<center> Konu Başarıyla Açıldı </center>";
+	    
 	}
 }
 
