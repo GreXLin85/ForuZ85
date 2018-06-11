@@ -1,5 +1,5 @@
 # ForuZ85
-[Anonimleştirildi] Tarafından kodlanan bir forum scriptidir.
+GreXLin85 Tarafından kodlanan bir forum scriptidir.
 
 # Gereksimler
 
