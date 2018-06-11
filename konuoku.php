@@ -45,10 +45,6 @@ if ( $konugetir->rowCount() ){
 $yorumgetir = $db ->query("SELECT yorum,kimyapti FROM yorumlar WHERE konuid = $kosul", PDO::FETCH_ASSOC);
 if ( $yorumgetir->rowCount() ){
 	$toplamyorum = $yorumgetir->rowCount();
-	foreach( $yorumgetir as $row ){
-	$yorum = $row['yorum'];
-	$kimyapti = $row['kimyapti'];
-		}
 	}
 if ($kosul == $id)
 {
@@ -60,7 +56,11 @@ if ($kosul == $id)
 	if ($toplamyorum == 0) {
 	  echo "<br><center>Burada hiç yorum yok gibi gözüküyor";
 	}else{
-		echo "<br>$yorum";
+			foreach( $yorumgetir as $row ){
+	$yorum = $row['yorum'];
+	$kimyapti = $row['kimyapti'];
+	echo "<br>".$yorum;
+		}
 	}
 }else{
 	header("location:forum.php");

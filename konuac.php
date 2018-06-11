@@ -34,7 +34,8 @@ if ($_POST) {
 	    
 	}
 }
-
+$icon = $db ->query("SELECT * FROM icon", PDO::FETCH_ASSOC);
+$select = $db ->query("SELECT * FROM kategoriler", PDO::FETCH_ASSOC);
 ?>
 <center>
 <form method="post" action="">
@@ -44,18 +45,29 @@ if ($_POST) {
   <div class="select">
     <select name="katagori" required="required">
       <option disabled>Katagori Seç</option>
-      <option>Hacking</option>
-      <option>Kodlama</option>
+<?php
+if ( $select->rowCount() ){ 
+   		$toplam = $select->rowCount();
+/* Toplam veri sayısını öğrenmek için rowCount() methoduni kullanabilirsiniz.. */
+	   foreach( $select as $row ){
+		print '<option>'.$row["isim"].'</option>';		
+  	   }
+   }
+?>
     </select>
   </div> <br>
 <div class="control" style="text-align: center;align-content: center;">
-  <label class="radio">
-    <input type="radio" name="icon" value="images/icons/internet.png">
-    <img src="images/icons/internet.png">
-  </label>
-  <label class="radio">
-    <input type="radio" name="icon" value="images/icons/chat.png">
-    <img src="images/icons/chat.png">
+    <?php
+if ( $icon->rowCount() ){ 
+   		$toplamicon = $icon->rowCount();
+/* Toplam veri sayısını öğrenmek için rowCount() methoduni kullanabilirsiniz.. */
+	   foreach( $icon as $row ){
+		print '  <label class="radio">
+    <input type="radio" name="icon" value="'.$row["icon"].'">
+    <img src="'.$row["icon"].'">';		
+  	   }
+   }
+?>
   </label>
 </div>
   <br>

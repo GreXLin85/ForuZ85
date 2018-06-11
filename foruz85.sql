@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 4.8.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: 127.0.0.1
--- Üretim Zamanı: 30 Nis 2018, 22:24:38
--- Sunucu sürümü: 10.1.30-MariaDB
--- PHP Sürümü: 7.2.1
+-- Üretim Zamanı: 11 Haz 2018, 08:35:09
+-- Sunucu sürümü: 10.1.32-MariaDB
+-- PHP Sürümü: 7.2.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,15 +25,53 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Tablo için tablo yapısı `icon`
+--
+
+CREATE TABLE `icon` (
+  `id` int(11) NOT NULL,
+  `icon` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Tablo döküm verisi `icon`
+--
+
+INSERT INTO `icon` (`id`, `icon`) VALUES
+(1, 'images/icons/internet.png'),
+(2, 'images/icons/chat.png');
+
+-- --------------------------------------------------------
+
+--
+-- Tablo için tablo yapısı `kategoriler`
+--
+
+CREATE TABLE `kategoriler` (
+  `id` int(11) NOT NULL,
+  `isim` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Tablo döküm verisi `kategoriler`
+--
+
+INSERT INTO `kategoriler` (`id`, `isim`) VALUES
+(1, 'Hacking'),
+(2, 'Oyun');
+
+-- --------------------------------------------------------
+
+--
 -- Tablo için tablo yapısı `konular`
 --
 
 CREATE TABLE `konular` (
   `id` int(11) NOT NULL,
+  `katagori` text NOT NULL,
   `icon` varchar(65) NOT NULL,
   `baslik` varchar(40) NOT NULL,
   `icerik` varchar(1200) NOT NULL,
-  `katagori` varchar(20) NOT NULL,
   `kimacti` varchar(16) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -89,6 +127,18 @@ CREATE TABLE `ziyaretcimesaj` (
 --
 
 --
+-- Tablo için indeksler `icon`
+--
+ALTER TABLE `icon`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Tablo için indeksler `kategoriler`
+--
+ALTER TABLE `kategoriler`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Tablo için indeksler `konular`
 --
 ALTER TABLE `konular`
@@ -117,16 +167,28 @@ ALTER TABLE `ziyaretcimesaj`
 --
 
 --
+-- Tablo için AUTO_INCREMENT değeri `icon`
+--
+ALTER TABLE `icon`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- Tablo için AUTO_INCREMENT değeri `kategoriler`
+--
+ALTER TABLE `kategoriler`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- Tablo için AUTO_INCREMENT değeri `konular`
 --
 ALTER TABLE `konular`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `uyeler`
 --
 ALTER TABLE `uyeler`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `yorumlar`
