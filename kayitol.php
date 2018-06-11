@@ -7,15 +7,18 @@ require_once('parcalar/ustkisim.php');
 if ($_POST) {
   $kadi = htmlspecialchars($_POST["kadi"]);
   $sifre = htmlspecialchars($_POST["sifre"]);
+  $mail = htmlspecialchars($_POST["mail"]);
   $yetki = "1";
   $query = $db->prepare("INSERT INTO uyeler SET
   kadi = :kadi,
   sifre = :sifre,
+  mail = :mail,
   yetki = :yetki");
 
   $insert = $query->execute(array(
       "kadi" => $kadi, 
       "sifre" => $sifre,
+      "mail" => $mail,
       "yetki" => $yetki
   ));
 
@@ -35,7 +38,10 @@ if ($_POST) {
       <label for="login" class="label">Nick:</label>
       <input type="text" name="kadi"class="input" placeholder="Nick">
     </p>
-
+    <p>
+      <label for="login" class="label">Mail:</label>
+      <input type="text" name="mail"class="input" placeholder="Mail">
+    </p>
     <p>
       <label for="password" class="label">Parola:</label>
       <input type="password" name="sifre"class="input" placeholder="Parola">

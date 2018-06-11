@@ -1,4 +1,8 @@
-<?php 
+<?php
+if (!file_exists("baglan.php")) {
+  header("location:hazirlayici.php");
+}
+
 ob_start();
 session_start();
 require_once('baglan.php');

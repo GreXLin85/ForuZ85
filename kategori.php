@@ -31,4 +31,7 @@ if ($kosul == $id) {
     <code>YENİ</code><a href="konuoku.php?konu='.$id.'"><img src="'.$icon.'">'.$baslik.'</a></div></div><br>';
 		}
 		}
+	if ($toplamkonu == 0) {
+		echo "<center>Burada hiçbirşey yok gibi gözüküyor :/</center>";
+	}
 	}
