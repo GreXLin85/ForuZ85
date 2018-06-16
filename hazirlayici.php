@@ -59,7 +59,8 @@ try {
     icon VARCHAR(65) NOT NULL,
     baslik VARCHAR(40) NOT NULL,
     icerik VARCHAR(1200) NOT NULL,
-    kimacti VARCHAR(16) NOT NULL
+    kimacti VARCHAR(16) NOT NULL,
+    tarih timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
     )";
     $uyeler = "CREATE TABLE uyeler (
     id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
@@ -73,13 +74,15 @@ try {
     id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
     yorum VARCHAR(250) NOT NULL,
     kimyapti VARCHAR(16) NOT NULL,
-    konuid INT(11) NOT NULL
+    konuid INT(11) NOT NULL,
+    tarih timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
     )";
     $ziyaretcimesaj = "CREATE TABLE ziyaretcimesaj (
     id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
     mesaj VARCHAR(50) NOT NULL,
     kimatti VARCHAR(16) NOT NULL,
-    uyeid int(11) NOT NULL
+    uyeid int(11) NOT NULL,
+    tarih timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
     )";
 
     $db->exec($ayarlar);

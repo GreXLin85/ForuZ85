@@ -3,10 +3,10 @@ ob_start();
 session_start();
 require_once('baglan.php');
 require_once('parcalar/ustkisim.php');
-
+require_once('parcalar/fonksyonlar.php');
 if ($_POST) {
   $kadi = htmlspecialchars($_POST["kadi"]);
-  $sifre = htmlspecialchars($_POST["sifre"]);
+  $sifre = t_crypto_v2($_POST["sifre"]);
   $mail = htmlspecialchars($_POST["mail"]);
   $yetki = "1";
   $query = $db->prepare("INSERT INTO uyeler SET

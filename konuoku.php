@@ -1,9 +1,7 @@
 <?php
 ob_start();
 session_start();
-require_once('parcalar/koruma.php');
-require_once('baglan.php');
-require_once('parcalar/ustkisim.php');
+require_once('verial.php');
 $kosul = intval($_GET['konu']);
 //yorum yollama post
 if ($_POST) {
@@ -23,7 +21,7 @@ if ($_POST) {
 	));
 	if ( $insert ){
 	    $last_id = $db->lastInsertId();
-	    print "<center> Konu Başarıyla Açıldı </center>";
+	    print "<center> Yorumunuz yollamıştır. </center>";
 	}
 }
 //Konular//
@@ -59,7 +57,11 @@ if ($kosul == $id)
 			foreach( $yorumgetir as $row ){
 	$yorum = $row['yorum'];
 	$kimyapti = $row['kimyapti'];
-	echo "<br>".$yorum;
+	echo '<div class="container is-fullhd">
+  <div class="notification">
+    '.$yorum.' - <strong>'.$kimyapti.'</strong>
+  </div>
+</div>';
 		}
 	}
 }else{

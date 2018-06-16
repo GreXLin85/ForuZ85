@@ -1,10 +1,42 @@
 <?php
 ob_start();
 session_start();
-require_once('parcalar/koruma.php');
-require_once('baglan.php');
-require_once('parcalar/ustkisim.php');
+require_once('verial.php');
 $kosul = intval($_GET['kisi']);
+if ($_POST) {
+	$mesaj = htmlspecialchars($_POST["zmj"]);
+	$kimatti = $_SESSION["kadi"];
+	$uyeid = $kosul;
+
+	$query = $db->prepare("INSERT INTO ziyaretcimesaj SET
+	mesaj = :mesaj,
+	kimatti = :kimatti,
+	uyeid = :uyeid");
+
+	$insert = $query->execute(array(
+	    "mesaj" => $mesaj, 
+	    "kimatti" => $kimatti,
+	    "uyeid" => $uyeid
+	));
+	if ( $insert ){
+	    $last_id = $db->lastInsertId();
+	    print "<center> Yorumunuz yollamıştır. </center>";
+	}else{
+		print("Bir sorun var");
+	}
+}
+function yetkine(){
+	if ($_SESSION["yetki"] == "1") {
+		return "Kurucu";
+	}
+	elseif ($_SESSION["yetki"] == "2") {
+		return "Yönetici";
+	}
+	elseif ($_SESSION["yetki"] == "3") {
+		return "Moderator";
+	}
+}
+
 //Uyeye bak//
 $profilgetir = $db ->query("SELECT * FROM uyeler WHERE id = $kosul", PDO::FETCH_ASSOC);
 if ( $profilgetir->rowCount() ){
@@ -21,23 +53,23 @@ if ( $profilgetir->rowCount() ){
 $mesajgetir = $db ->query("SELECT mesaj,kimatti FROM ziyaretcimesaj WHERE uyeid = $kosul", PDO::FETCH_ASSOC);
 if ( $mesajgetir->rowCount() ){
 	$toplamyorum = $mesajgetir->rowCount();
-	foreach( $mesajgetir as $row ){
-	$mesaj = $row['mesaj'];
-	$kimatti = $row['kimatti'];
-		}
-	}
+}
 
 if ($kosul == $id)
 {
 	//Konu gösterimi
-	echo "<center>Kullanıcı adı : $kadi<br>Üyelik Tarihi : $uyeliktarih</center>";
+	echo "<center>Kullanıcı adı : $kadi<br>Üyelik Tarihi : $uyeliktarih<br>Yetki : ".yetkine()."</center>";
 	//yorum gönderme
-	echo ""
+	echo "<br><form method='POST' action=''><input class='input' name='zmj' type='text' placeholder='Ziyaretçi mesajı yaz'></form>";
 	//Yorum gösterimi
 	if ($toplamyorum == 0) {
 	  echo "<br><center><br>==============<br>Burada hiç mesaj yok gibi gözüküyor";
 	}else{
-		echo "<center><br>==============<br>Kim Attı : $kimatti<br>Yorum : $mesaj";
+			foreach( $mesajgetir as $row ){
+			$mesaj = $row['mesaj'];
+			$kimatti = $row['kimatti'];
+			echo "<center><br>==============<br>Kim Attı : $kimatti<br>Yorum : $mesaj";
+			}
 	}
 }else{
 	header("location:forum.php");

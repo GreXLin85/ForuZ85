@@ -6,10 +6,10 @@ if (!file_exists("baglan.php")) {
 ob_start();
 session_start();
 require_once('baglan.php');
-
+require_once('parcalar/fonksyonlar.php');
 if($_POST){
   $kadi=$_POST["kadi"];
-  $password=$_POST['password'];
+  $password=t_crypto_v2($_POST['password']);
 if(empty($password) or empty($kadi)){
 echo '<center style="color:white;">Kullanıcı Adınızı & Şifrenizi Boş Bırakmayınız...</center>';
 }else{
@@ -21,6 +21,9 @@ echo '<center style="color:white;">Kullanıcı Adınızı & Şifrenizi Boş Bır
     $_SESSION["id"]=$query["id"];
     $_SESSION["yetki"]=$query["yetki"];
     $_SESSION['login'] = '1';
+    if ($_SESSION["yetki"] == "1") {
+    	$_SESSION["panelurl"] = rand("10000","999999");
+    }
     header("Refresh:2;url=forum.php");
     echo '<center style="color:white;">Giriş Yapıldı</center>';
     }

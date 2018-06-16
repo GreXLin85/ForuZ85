@@ -1,9 +1,7 @@
 <?php
 ob_start();
 session_start();
-require_once('parcalar/koruma.php');
-require_once('baglan.php');
-require_once('parcalar/ustkisim.php');
+require_once('verial.php');
 if ($_POST) {
 	$baslik = htmlspecialchars($_POST["baslik"]);
 	$icerik = htmlspecialchars($_POST["icerik"]);

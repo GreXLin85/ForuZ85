@@ -1,9 +1,16 @@
 <?php
 ob_start();
 session_start();
-require_once('parcalar/koruma.php');
-require_once('baglan.php');
-require_once('parcalar/ustkisim.php');
+require_once('verial.php');
+$panel = $_GET["admin"];
+
+if ($_SESSION["yetki"] == "1") {
+  if ($panel == $_SESSION["panelurl"]) {
+    print "admin panelindesiniz";
+  }
+}else{
+  echo "<center>İZİNSİZ GİRİŞ ENGELLENDİ</center>";
+}
    $select = $db ->query("SELECT * FROM kategoriler", PDO::FETCH_ASSOC);
    if ( $select->rowCount() ){ 
    		$toplam = $select->rowCount();

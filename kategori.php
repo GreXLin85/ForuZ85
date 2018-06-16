@@ -1,11 +1,7 @@
 <?php
 ob_start();
 session_start();
-require_once ('parcalar/koruma.php');
-
-require_once ('baglan.php');
-
-require_once ('parcalar/ustkisim.php');
+require_once('verial.php');
 
 $kosul = intval($_GET['id']);
 $konuidgetir = $db ->query("SELECT id FROM konular", PDO::FETCH_ASSOC);
