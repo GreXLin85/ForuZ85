@@ -6,7 +6,34 @@ $panel = $_GET["admin"];
 
 if ($_SESSION["yetki"] == "1") {
   if ($panel == $_SESSION["panelurl"]) {
-    print "admin panelindesiniz";
+    ?>
+<div class="columns" style="text-align: center;">
+  <div class="column" style="border-style: solid;">
+    Üyeler
+  </div>
+  <div class="column" style="border-style: solid;">
+    Konular
+  </div>
+  <div class="column" style="border-style: solid;">
+    Yorumlar
+  </div>
+  <div class="column" style="border-style: solid;">
+    Site ayarları
+  </div>
+</div>
+<div style="text-align: center;font-size: 30px;">
+Yönetim paneline hoş geldiniz<br>
+<?php 
+$datetr = date("H:i");
+if ($datetr>"06:00") {
+  echo "iyi günler ".$_SESSION["kadi"];
+}else {
+  echo "iyi akşamlar ".$_SESSION["kadi"];
+}
+?>
+</div>
+    <?php
+    die();
   }
 }else{
   echo "<center>İZİNSİZ GİRİŞ ENGELLENDİ</center>";
@@ -14,7 +41,6 @@ if ($_SESSION["yetki"] == "1") {
    $select = $db ->query("SELECT * FROM kategoriler", PDO::FETCH_ASSOC);
    if ( $select->rowCount() ){ 
    		$toplam = $select->rowCount();
-/* Toplam veri sayısını öğrenmek için rowCount() methoduni kullanabilirsiniz.. */
 	   foreach( $select as $row ){
 	   	$bam = $row["isim"];
 	   	$id = $row["id"];

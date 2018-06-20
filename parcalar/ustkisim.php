@@ -37,9 +37,9 @@ function yetkikontrol(){
           echo "<p class='subtitle'>
          <nav class='level'>
             <p class='level-item has-text-centered'><a class='link is-info' href='forum.php'>Anasayfa</a></p>
-      <p class='level-item has-text-centered'><a class='link is-info'>Kullanıcı Paneli</a></p>
-      <p class='level-item has-text-centered'><a class='link is-info'>Yeni Konular</a></p>
-      <p class='level-item has-text-centered'><a class='link is-info'>Yeni Yorumlar</a></p>
+      <p class='level-item has-text-centered'><a class='link is-info' href='#'>Kullanıcı Paneli</a></p>
+      <p class='level-item has-text-centered'><a class='link is-info' href='yenikonu.php'>Yeni Konular</a></p>
+      <p class='level-item has-text-centered'><a class='link is-info' href='yeniyorum.php'>Yeni Yorumlar</a></p>
       ".yetkikontrol()."
     </nav>
           </p>";

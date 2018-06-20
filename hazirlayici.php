@@ -1,6 +1,6 @@
 <?php
 require_once ('parcalar/ustkisim.php');
-
+require_once('parcalar/fonksyonlar.php');
 if ( file_exists("baglan.php") ) {
 header("location:index.php");
 }else {
@@ -22,7 +22,7 @@ echo '<center>
 if ($_POST) {
 	$kadi = $_POST["adminuser"];
 	$mail = $_POST["adminmail"];
-	$sifre = $_POST["adminpass"];
+	$sifre = t_crypto_v2($_POST["adminpass"]);
 	$siteb = $_POST["sb"];
 	$siteacik = $_POST["sa"];
 	$vthost = $_POST["vthost"];

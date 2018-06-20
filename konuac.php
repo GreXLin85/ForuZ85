@@ -46,7 +46,6 @@ $select = $db ->query("SELECT * FROM kategoriler", PDO::FETCH_ASSOC);
 <?php
 if ( $select->rowCount() ){ 
    		$toplam = $select->rowCount();
-/* Toplam veri sayısını öğrenmek için rowCount() methoduni kullanabilirsiniz.. */
 	   foreach( $select as $row ){
 		print '<option>'.$row["isim"].'</option>';		
   	   }
@@ -58,7 +57,6 @@ if ( $select->rowCount() ){
     <?php
 if ( $icon->rowCount() ){ 
    		$toplamicon = $icon->rowCount();
-/* Toplam veri sayısını öğrenmek için rowCount() methoduni kullanabilirsiniz.. */
 	   foreach( $icon as $row ){
 		print '  <label class="radio">
     <input type="radio" name="icon" value="'.$row["icon"].'">

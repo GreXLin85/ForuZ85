@@ -4,8 +4,24 @@ session_start();
 require_once('baglan.php');
 require_once('parcalar/ustkisim.php');
 require_once('parcalar/fonksyonlar.php');
+
 if ($_POST) {
+  $ayarlar = $db->query("SELECT * FROM ayarlar", PDO::FETCH_ASSOC);
+  if ( $ayarlar->rowCount() ){
+       foreach( $ayarlar as $ayarlara ){
+            $baslik = $ayarlara['sb'];
+            $aciklama = $ayarlara['sa'];
+       }
+  }
   $kadi = htmlspecialchars($_POST["kadi"]);
+  $kontrolkadi = $_POST["kadi"];
+  $nickkontrol = $db->query("SELECT * FROM uyeler WHERE kadi LIKE '%$kontrolkadi%'", PDO::FETCH_ASSOC);
+  $nickmiktar=$nickkontrol->rowCount();
+  if ($nickmiktar>1) {
+    echo "<center>Zaten böyle bir üye var</center>";
+    header("refresh:2;url=kayitol.php");
+    die();
+  }
   $sifre = t_crypto_v2($_POST["sifre"]);
   $mail = htmlspecialchars($_POST["mail"]);
   $yetki = "1";
