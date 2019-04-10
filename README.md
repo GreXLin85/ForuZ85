@@ -10,9 +10,8 @@ GreXLin85 Tarafından kodlanan bir forum scriptidir.
 > Min 1 adet veritabanı
  
 # Kurulum
-
-1. `foruz85.sql` isimli dosyayı oluşturduğunuz veritabanına İçe Aktar menüsünden aktarım yapıyorsunuz
-2. `baglan.php`'den ayarlarınızı yapıp kayıt ediyorsunuz
+1. Dosyaları FTP'den upload edin.
+2. 'hazirlayici.php' 'yi çalıştırın ve istenilen yerleri doldurun.
 3. Kurulum tamamdır.
 
 # Ne kadar güvenli bir script ?
